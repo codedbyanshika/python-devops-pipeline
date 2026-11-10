@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: python-devops-deployment
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: python-devops-app
+
+  template:
+    metadata:
+      labels:
+        app: python-devops-app
+
+    spec:
+      containers:
+        - name: python-devops-container
+          image: codedbyanshika/python-devops-app:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
